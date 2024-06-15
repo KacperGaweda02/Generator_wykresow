@@ -1,0 +1,72 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:generator_wykresow.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="generator_wykresow.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        ExtendClientAreaToDecorationsHint="True"
+        WindowStartupLocation="CenterScreen"
+        Icon="/Assets/logo.ico"
+        Title="Generator wykresów"
+		WindowState="FullScreen"
+        CanResize="False">
+	<Window.Background>
+		<ImageBrush Source="/Assets/background.jpg" Stretch="UniformToFill"/>
+	</Window.Background>
+	<Design.DataContext>
+		<!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+		<vm:MainWindowViewModel/>
+	</Design.DataContext>
+	<Window.Styles>
+		<Style Selector="Button.round">
+			<Setter Property="Width" Value="230"/>
+			<Setter Property="Height" Value="120"/>
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderBrush" Value="White"/>
+			<Setter Property="BorderThickness" Value="2"/>
+			<Setter Property="CornerRadius" Value="50"/>
+			<Setter Property="HorizontalContentAlignment" Value="Center"/>
+			<Setter Property="VerticalContentAlignment" Value="Center"/>
+		</Style>
+	</Window.Styles>
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition></RowDefinition>
+			<RowDefinition></RowDefinition>
+			<RowDefinition></RowDefinition>
+			<RowDefinition></RowDefinition>
+			<RowDefinition></RowDefinition>
+		</Grid.RowDefinitions>
+		<TextBlock x:Name="tekst" Text="GENERATOR WYKRESÓW" FontSize="80" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="5" Foreground="White" FontFamily="/Assets/Codystar-Light.ttf#"></TextBlock>
+		<Button Classes="round" x:Name="start" Content="ROZPOCZNIJ" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2" Grid.Row="3" Click="StartButton_Click" Foreground="White" FontFamily="/Assets/Codystar-Light.ttf#"></Button>
+		<Button Classes="round" x:Name="exit" Content="ZAMKNIJ" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Column="2" Grid.Row="4" Click="ExitButton_Click" Foreground="White" FontFamily="/Assets/Codystar-Light.ttf#"/>
+		<Button Classes="round" x:Name="sin" Content="SINUS" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="3" IsVisible="False" Click="SinButton_Click" Foreground="White" FontFamily="/Assets/Codystar-Light.ttf#"></Button>
+		<Button Classes="round" x:Name="cos" Content="COSINUS" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Grid.Row="3" IsVisible="False" Click="CosButton_Click" Foreground="White" FontFamily="/Assets/Codystar-Light.ttf#"></Button>
+		<Button Classes="round" x:Name="tg" Content="TANGENS" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3" Grid.Row="3" IsVisible="False" Click="TgButton_Click" Foreground="White" FontFamily="/Assets/Codystar-Light.ttf#"></Button>
+		<Button Classes="round" x:Name="ctg" Content="COTANGENS" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="4" Grid.Row="3" IsVisible="False" Click="CtgButton_Click" Foreground="White" FontFamily="/Assets/Codystar-Light.ttf#"></Button>
+		<Button Classes="round" x:Name="powrot" Content="POWRÓT" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="0" IsVisible="False" Click="BackButton_Click" Foreground="White" FontFamily="/Assets/Codystar-Light.ttf#"></Button>
+
+		<TextBlock x:Name="tekst1" Text="PODAJ PARAMETRY" FontSize="50" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3" IsVisible="False" Foreground="White" FontFamily="/Assets/Codystar-Light.ttf#"></TextBlock>
+		<TextBox Name="inputTextBox1" HorizontalAlignment="Center" VerticalAlignment="Center" MaxWidth="20" Grid.Column="1" Grid.Row="1" IsVisible="False"/>
+		<TextBox Name="inputTextBox2" HorizontalAlignment="Center" VerticalAlignment="Center" MaxWidth="20" Grid.Column="2" Grid.Row="1" IsVisible="False"/>
+		<TextBox Name="inputTextBox3" HorizontalAlignment="Center" VerticalAlignment="Center" MaxWidth="20" Grid.Column="1" Grid.Row="2" IsVisible="False"/>
+		<TextBox Name="inputTextBox4" HorizontalAlignment="Center" VerticalAlignment="Center" MaxWidth="20" Grid.Column="2" Grid.Row="2" IsVisible="False"/>
+		<TextBlock x:Name="a" Text="a:" FontSize="20" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" IsVisible="False" Foreground="White"></TextBlock>
+		<TextBlock x:Name="b" Text="b:" FontSize="20" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="2" Grid.Row="1" IsVisible="False" Foreground="White"></TextBlock>
+		<TextBlock x:Name="c" Text="c:" FontSize="20" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2" IsVisible="False" Foreground="White"></TextBlock>
+		<TextBlock x:Name="d" Text="d:" FontSize="20" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="2" Grid.Row="2" IsVisible="False" Foreground="White"></TextBlock>
+		<Button Classes="round" x:Name="generuj" Content="GENERUJ" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2" Grid.Row="3" IsVisible="False" Click="GenerateButton_Click" Foreground="White" FontFamily="/Assets/Codystar-Light.ttf#"></Button>
+		<TextBlock x:Name="pattern" Text="" FontSize="20" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="1" Grid.RowSpan="2" IsVisible="False" Foreground="White"></TextBlock>
+		<TextBlock x:Name="status" Text="" FontSize="20" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="3" IsVisible="False" Foreground="White"></TextBlock>
+	</Grid>
+</Window>
